@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <title>bnna.net</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png">
+  <style>
+    @import url(./main.css);
+  </style>
+</head>
+<body>
+<h1>
+  <a href="https://bnna.net">
+    <span style="color:var(--good)">bnna</span><span style="color:var(--dirt)">.</span><span style="color:var(--warn)">net</span>
+  </a>
+</h1>
+<h2>
+  Cloud hosting.<br>
+  Privately owned.<br>
+  Cheaper by the bunch.
+</h2>
+<!-- <h2>
+  All the way down,<br>
+  no parity in sight.
+</h2> -->
+
+<form name="signup">
+  <fieldset>
+    <input name="email" placeholder="your@email.com" />
+    <button>Request access</button>
+  </fieldset>
+  <h3 class="signup-msg">&nbsp;</h3>
+</form>
+<script type="text/javascript">
+let formSuccess = false;
+
+document.querySelector('[name=signup]').addEventListener(
+  'submit',
+  function (event) {
+    event.preventDefault();
+    document.querySelector('.signup-msg')?.remove()
+
+    console.log('do something on form submit', formSuccess);
+
+    let msg = `<h3 class="signup-msg warn">Whoops, looks like something went wrong</h3>`
+
+    if (formSuccess) {
+      msg = `<h3 class="signup-msg good">You're good to go and should receive a confirmation email shortly.</h3>`
+      event.target.querySelector('fieldset').disabled = true
+    }
+
+    event.target.insertAdjacentHTML('beforeend', msg)
+
+    formSuccess = !formSuccess
+  }
+);
+</script>
+</body>
+</html>
