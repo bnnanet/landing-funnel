@@ -14,13 +14,13 @@
   --dang: #610; /* danger */
   --lite: #09c;
 
-  --fb: -apple-system, BlinkMacSystemFont, Avenir, "Avenir Next",
-  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
+  --fb: -apple-system, BlinkMacSystemFont, Avenir, "Avenir Next", "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   --fm: "IBM Plex Mono", Consolas, "Andale Mono WT", "Andale Mono",
-  "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
-  "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco,
-  "Courier New", Courier, monospace;
+    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco,
+    "Courier New", Courier, monospace;
   font-family: var(--fm);
   font-size: 24px;
   line-height: 24px;
@@ -40,21 +40,34 @@
   --max-fs-rem: var(--max-fs) * 1rem;
   --min-vw-rem: var(--min-vw) * 1rem;
 
-  --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) / (var(--max-vw) - var(--min-vw));
-  --slope-h: (var(--max-fs) - var(--min-fs)) * (100vh - var(--min-vw-rem)) / (var(--max-vw) - var(--min-vw));
+  --slope: (var(--max-fs) - var(--min-fs)) * (100vw - var(--min-vw-rem)) /
+    (var(--max-vw) - var(--min-vw));
+  --slope-h: (var(--max-fs) - var(--min-fs)) * (100vh - var(--min-vw-rem)) /
+    (var(--max-vw) - var(--min-vw));
 
-  font-size: clamp(var(--min-fs-rem), var(--min-fs-rem) + var(--slope), var(--max-fs-rem));
+  font-size: clamp(
+    var(--min-fs-rem),
+    var(--min-fs-rem) + var(--slope),
+    var(--max-fs-rem)
+  );
 }
 
 @media (orientation: landscape) {
   :root,
   ::backdrop {
-    --slope: (var(--max-fs) - var(--min-fs)) * (100vh - var(--min-vw-rem)) / (var(--max-vw) - var(--min-vw));
-    font-size: clamp(var(--min-fs-rem), var(--min-fs-rem) + var(--slope), var(--max-fs-rem));
+    --slope: (var(--max-fs) - var(--min-fs)) * (100vh - var(--min-vw-rem)) /
+      (var(--max-vw) - var(--min-vw));
+    font-size: clamp(
+      var(--min-fs-rem),
+      var(--min-fs-rem) + var(--slope),
+      var(--max-fs-rem)
+    );
   }
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 @media (prefers-color-scheme: xlight) {
   :root:not(.it),
@@ -73,55 +86,55 @@
     --fc: var(--l);
   }
   nav a.theme::before {
-    content: '☀';
+    content: "☀";
     transform: rotateZ(0deg);
   }
   html:not(.it) nav a.theme::before {
-    content: '☽';
+    content: "☽";
     transform: rotateZ(45deg);
   }
 }
 /*@media (prefers-color-scheme: dark) {*/
-  :root:not(.it),
-  ::backdrop {
-    color-scheme: dark;
-    --bgc: var(--d);
-    --fc: var(--l);
-  }
+:root:not(.it),
+::backdrop {
+  color-scheme: dark;
+  --bgc: var(--d);
+  --fc: var(--l);
+}
 
-  .it {
-    color-scheme: light;
-    --bgc: var(--l);
-    --fc: var(--d);
-    --warn: var(--warnb);
-    --good: var(--goodb);
-    --dirt: var(--dirtb);
-  }
-  nav a.theme::before {
-    content: '☽';
-    transform: rotateZ(45deg);
-  }
-  html:not(.it) nav a.theme::before {
-    content: '☀';
-    transform: rotateZ(0deg);
-  }
+.it {
+  color-scheme: light;
+  --bgc: var(--l);
+  --fc: var(--d);
+  --warn: var(--warnb);
+  --good: var(--goodb);
+  --dirt: var(--dirtb);
+}
+nav a.theme::before {
+  content: "☽";
+  transform: rotateZ(45deg);
+}
+html:not(.it) nav a.theme::before {
+  content: "☀";
+  transform: rotateZ(0deg);
+}
 /*}*/
 
 ::-webkit-input-placeholder {
   color: var(--fc);
-  opacity: .5;
+  opacity: 0.5;
 }
 ::-moz-placeholder {
   color: var(--fc);
-  opacity: .5;
+  opacity: 0.5;
 }
 :-ms-input-placeholder {
   color: var(--fc);
-  opacity: .5;
+  opacity: 0.5;
 }
 :-moz-placeholder {
   color: var(--fc);
-  opacity: .5;
+  opacity: 0.5;
 }
 
 body {
@@ -133,20 +146,20 @@ body {
   flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
-  display:grid;
-  grid-auto-flow:row;
+  display: grid;
+  grid-auto-flow: row;
   align-content: space-between;
   justify-content: stretch;
-  height:100vh;
-  width:100vw;
-  font-size:8vw;
-  font-weight:900;
-  line-height:1;
-  overflow:hidden;
+  height: 100vh;
+  width: 100vw;
+  font-size: 8vw;
+  font-weight: 900;
+  line-height: 1;
+  overflow: hidden;
 }
 
 a {
-  color:var(--warn);
+  color: var(--warn);
   text-decoration: none;
 }
 
@@ -158,12 +171,12 @@ h1 {
 
 h2 {
   font-size: 1rem;
-  opacity: .75;
+  opacity: 0.75;
   line-height: 1.5;
 }
 
 h3 {
-  font-size: .5rem;
+  font-size: 0.5rem;
 }
 
 form {
@@ -203,7 +216,7 @@ form button {
 
 form input {
   border: 0 solid transparent;
-  border-bottom: .35vh solid var(--good);
+  border-bottom: 0.35vh solid var(--good);
   min-width: 170px;
 }
 
@@ -229,7 +242,7 @@ form button:hover:not(:disabled) {
 }
 form input:disabled,
 form button:disabled {
-  opacity: .25;
+  opacity: 0.25;
 }
 
 main {
