@@ -40,12 +40,19 @@
         .then(showSuccess)
         .catch(showFailure);
 
+      /**
+       * @param {string} msg
+       * @param {string} [cls]
+       */
+      function msgHtml(msg, cls = '') {
+        return `<h3 class="${['signup-msg', cls].join(' ')}">${msg}</h3>`
+      }
+
       async function showSuccess() {
         //let msg = `You're good to go and should receive a confirmation email shortly.`;
         let msg = `You're good to go. We'll reach out shortly.`;
-        let msgHtml = `<h3 class="signup-msg good">${msg}</h3>`;
         target.querySelector("fieldset")?.setAttribute("disabled", "disabled");
-        target.insertAdjacentHTML("beforeend", msgHtml);
+        target.insertAdjacentHTML("beforeend", msgHtml(msg, 'good'));
       }
 
       /** @param {Error} err */
@@ -53,8 +60,10 @@
         console.error(`Failed to send request for invite`);
         console.error(err);
 
-        let msgHtml = `<h3 class="signup-msg warn">Whoops, looks like something went wrong. <br/>Email <a href="mailto:bnnadotnet@therootcompany.com">bnnadotnet@therootcompany.com</a> instead.</h3>`;
-        target.insertAdjacentHTML("beforeend", msgHtml);
+        let email = 'bnnadotnet@therootcompany.com'
+        let msg = `Whoops, looks like something went wrong.<br/>
+          Email <a href="mailto:${email}">${email}</a> instead.`;
+        target.insertAdjacentHTML("beforeend", msgHtml(msg, 'warn'));
       }
     });
 
