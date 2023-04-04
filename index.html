@@ -34,28 +34,6 @@
       </fieldset>
       <h3 class="signup-msg">&nbsp;</h3>
     </form>
-    <script type="text/javascript">
-      let formSuccess = false;
-
-      document
-        .querySelector("[name=signup]")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-          document.querySelector(".signup-msg")?.remove();
-
-          console.log("do something on form submit", formSuccess);
-
-          let msg = `<h3 class="signup-msg warn">Whoops, looks like something went wrong</h3>`;
-
-          if (formSuccess) {
-            msg = `<h3 class="signup-msg good">You're good to go and should receive a confirmation email shortly.</h3>`;
-            event.target.querySelector("fieldset").disabled = true;
-          }
-
-          event.target.insertAdjacentHTML("beforeend", msg);
-
-          formSuccess = !formSuccess;
-        });
-    </script>
+    <script type="text/javascript" src="./app.js"></script>
   </body>
 </html>
