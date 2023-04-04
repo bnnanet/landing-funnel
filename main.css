@@ -163,6 +163,10 @@ a {
   text-decoration: none;
 }
 
+a[href^="mailto:"] {
+  text-decoration: underline;
+}
+
 h1 {
   font-size: 2rem;
   justify-self: flex-start;
