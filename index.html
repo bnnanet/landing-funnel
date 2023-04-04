@@ -9,11 +9,19 @@
     <title>bnna.net</title>
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="shortcut icon" type="image/png" href="./favicon.png" />
+    <script type="text/javascript">
+      if (JSON.parse(localStorage.getItem('theme'))) {
+        document.documentElement.classList.add('it')
+      }
+    </script>
     <style>
       @import url(./main.css);
     </style>
   </head>
   <body>
+    <nav>
+      <a class="theme" href="#theme" title="Invert Theme"></a>
+    </nav>
     <h1>
       <a href="https://bnna.net/">
         <span style="color: var(--good)">bnna</span
@@ -29,11 +37,26 @@
 
     <form name="signup">
       <fieldset>
-        <input name="email" type="email" required placeholder="you@email.com" />
+        <input name="email" type="email" required placeholder="your@email.com" />
         <button>Request Invite</button>
       </fieldset>
       <h3 class="signup-msg">&nbsp;</h3>
     </form>
     <script type="text/javascript" src="./app.js"></script>
+    <script type="text/javascript" async>
+      (function invertTheme(selector) {
+        let theme = JSON.parse(localStorage.getItem('theme'))
+
+        if (selector) {
+          document.querySelector(selector)
+            .addEventListener('click', event => {
+              event.preventDefault()
+              theme = !theme
+              localStorage.setItem('theme', theme)
+              document.documentElement.classList.toggle('it')
+            })
+        }
+      })('nav a.theme')
+    </script>
   </body>
 </html>

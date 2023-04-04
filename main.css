@@ -8,28 +8,16 @@
   --good: #9c0; /* good */
   --goodb: #9b0; /* good */
   --warn: #fc0; /* warn */
-  --warnb: #f90; /* warn */
-  --dirt: #840; /* danger */
-  --dirtb: #632; /* danger */
+  --warnb: #fa0; /* warn */
+  --dirt: #840;
+  --dirtb: #632;
   --dang: #610; /* danger */
   --lite: #09c;
 
-  --fb: -apple-system, BlinkMacSystemFont, Avenir, "Avenir Next", "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
   --fm: "IBM Plex Mono", Consolas, "Andale Mono WT", "Andale Mono",
     "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
     "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco,
     "Courier New", Courier, monospace;
-  font-family: var(--fm);
-  font-size: 24px;
-  line-height: 24px;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 
   --min-fs: 1;
   --max-fs: 2.5;
@@ -45,11 +33,20 @@
   --slope-h: (var(--max-fs) - var(--min-fs)) * (100vh - var(--min-vw-rem)) /
     (var(--max-vw) - var(--min-vw));
 
+  font-family: var(--fm);
+  font-size: 24px;
   font-size: clamp(
     var(--min-fs-rem),
     var(--min-fs-rem) + var(--slope),
     var(--max-fs-rem)
   );
+  line-height: 24px;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 @media (orientation: landscape) {
@@ -65,11 +62,7 @@
   }
 }
 
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: xlight) {
+@media (prefers-color-scheme: light) {
   :root:not(.it),
   ::backdrop {
     color-scheme: light;
@@ -94,31 +87,32 @@
     transform: rotateZ(45deg);
   }
 }
-/*@media (prefers-color-scheme: dark) {*/
-:root:not(.it),
-::backdrop {
-  color-scheme: dark;
-  --bgc: var(--d);
-  --fc: var(--l);
-}
 
-.it {
-  color-scheme: light;
-  --bgc: var(--l);
-  --fc: var(--d);
-  --warn: var(--warnb);
-  --good: var(--goodb);
-  --dirt: var(--dirtb);
+@media (prefers-color-scheme: dark) {
+  :root:not(.it),
+  ::backdrop {
+    color-scheme: dark;
+    --bgc: var(--d);
+    --fc: var(--l);
+  }
+
+  .it {
+    color-scheme: light;
+    --bgc: var(--l);
+    --fc: var(--d);
+    --warn: var(--warnb);
+    --good: var(--goodb);
+    --dirt: var(--dirtb);
+  }
+  nav a.theme::before {
+    content: "☽";
+    transform: rotateZ(45deg);
+  }
+  html:not(.it) nav a.theme::before {
+    content: "☀";
+    transform: rotateZ(0deg);
+  }
 }
-nav a.theme::before {
-  content: "☽";
-  transform: rotateZ(45deg);
-}
-html:not(.it) nav a.theme::before {
-  content: "☀";
-  transform: rotateZ(0deg);
-}
-/*}*/
 
 ::-webkit-input-placeholder {
   color: var(--fc);
@@ -137,25 +131,27 @@ html:not(.it) nav a.theme::before {
   opacity: 0.5;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: var(--bgc);
   color: var(--fc);
+  display: grid;
+  overflow: hidden;
+  grid-auto-flow: row;
+  align-content: space-evenly;
+  justify-content: stretch;
   margin: 0;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
-  display: grid;
-  grid-auto-flow: row;
-  align-content: space-between;
-  justify-content: stretch;
   height: 100vh;
   width: 100vw;
   font-size: 8vw;
   font-weight: 900;
   line-height: 1;
-  overflow: hidden;
 }
 
 a {
@@ -165,6 +161,40 @@ a {
 
 a[href^="mailto:"] {
   text-decoration: underline;
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  /* flex: 1 1 auto; */
+  width: 100%;
+  justify-content: space-between;
+  place-content: end;
+  place-self: end;
+  line-height: 2;
+
+  background-color: var(--bgc);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+}
+
+nav a {
+  display: flex;
+  height: 3rem;
+  line-height: 3;
+  padding: 0 1rem;
+  flex: 0 0 auto;
+}
+
+nav a.theme {
+  font-weight: bolder;
+  font-size: 1.5rem;
+  line-height: 2.2;
 }
 
 h1 {
@@ -219,9 +249,9 @@ form button {
 }
 
 form input {
+  transition-property: color, border-color;
   border: 0 solid transparent;
   border-bottom: 0.35vh solid var(--good);
-  min-width: 170px;
 }
 
 form button {
