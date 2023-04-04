@@ -167,20 +167,15 @@ nav {
   position: fixed;
   display: flex;
   flex-direction: row;
-  /* flex: 1 1 auto; */
-  width: 100%;
   justify-content: space-between;
   place-content: end;
   place-self: end;
-  line-height: 2;
-
-  background-color: var(--bgc);
-  position: fixed;
-  z-index: 10;
   top: 0;
   right: 0;
   width: 100%;
   height: auto;
+  line-height: 2;
+  z-index: 10;
 }
 
 nav a {
@@ -189,18 +184,23 @@ nav a {
   line-height: 3;
   padding: 0 1rem;
   flex: 0 0 auto;
+  outline: none;
+  user-select: none;
 }
 
 nav a.theme {
   font-weight: bolder;
   font-size: 1.5rem;
   line-height: 2.2;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1 {
   font-size: 2rem;
   justify-self: flex-start;
   margin: 0;
+  z-index: 11;
 }
 
 h2 {
