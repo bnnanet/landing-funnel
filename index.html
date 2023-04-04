@@ -14,6 +14,15 @@
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="shortcut icon" type="image/png" href="./favicon.png" />
     <script type="text/javascript">
+      // remove once GitHub Pages DNS verification hiccup goes away
+      // (or shortly once we migrate to our platform's servers)
+      let isHttp = window.location.href.startsWith("http://");
+      if (isHttp) {
+        let httpsUrl = window.location.href.replace("http://", "https://");
+        window.location.replace(httpsUrl);
+      }
+    </script>
+    <script type="text/javascript">
       if (JSON.parse(localStorage.getItem("theme"))) {
         document.documentElement.classList.add("it");
       }
