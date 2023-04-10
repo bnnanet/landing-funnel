@@ -291,7 +291,7 @@ main {
   color: var(--warn);
 }
 
-@media (min-width: 760px) {
+@media (min-width: 985px) {
   body {
     padding: 10vh;
   }
